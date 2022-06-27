@@ -1,0 +1,29 @@
+Command used in shell
+
+Get the runs and names of the dataset
+        ./ScriptRuns.py SraRunInfo.csv
+        ./Script_nomes SraRunInfo.csv
+
+
+
+Join the 2 txt files into one separated by ","
+        paste -d "," references.txt nomes.txt > final.txt
+
+Execute the fastqdumps
+        ./BashDump final.txt
+
+
+create the parameter file
+        ipyrad -n simdata
+
+Execute the ipyrad
+        ipyrad -p params-simdata.txt -s 1234567 -c 4
+
+
+To get the number of each species for the Rstudio:
+
+        grep -c "hortorum" nomes.txt
+        grep -c"lucorum" nomes.txt
+        grep -c "ruderatus" nomes.txt
+        grep -c "pascuorum" nomes.txt
+        grep -c "lapidarius" nomes.txt

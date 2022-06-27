@@ -1,0 +1,19 @@
+#!/bin/bash
+
+
+#This script will do the fasterq-dump of every RUN ACESSION, will get only the first 200000 reads of each file and zip it to a file.
+#The Argument used is the final.txt
+
+file=$1
+
+while IFS= read -r line
+do
+        srr=${line:0:11}
+        nomes=${line:13 -1}
+        fasterq-dump $srr
+        head -n 200000 "${srr}_1.fastq" | gzip > "${nomes}_1.fastq.gz"
+        rm "${srr}_1.fastq"
+        head -n 200000 "${srr}_2.fastq"| gzip > "${nomes}_2.fastq.gz"
+        rm "${srr}_2.fastq"
+
+done < $1

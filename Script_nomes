@@ -1,0 +1,17 @@
+#! /usr/bin/env python3
+
+
+#Script that will get the names of the species from the dataset
+
+import sys
+import csv
+import pandas as pd
+
+file = sys.argv[1]
+
+df = pd.read_csv(file)
+coluna = df['ScientificName']
+coluna2 = df['SampleName']
+colunas1 = coluna + ', ' + coluna2
+with open('nomes.txt', 'w') as w:
+    w.write("  \n".join(colunas1))
